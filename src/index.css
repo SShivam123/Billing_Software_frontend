@@ -1,0 +1,28 @@
+*{
+    font-family: "Outfit";
+}
+@import "tailwindcss";
+
+.cartitems::-webkit-scrollbar{
+    display: none;
+}
+
+.firstRow::-webkit-scrollbar{
+    display: none;
+}
+
+.SecondRow::-webkit-scrollbar{
+    display: none;
+}
+
+.dashboard::-webkit-scrollbar{
+    display: none;
+}
+
+.categoryList::-webkit-scrollbar{
+    display: none;
+}
+
+.itemss::-webkit-scrollbar{
+    display: none;
+}
