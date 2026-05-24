@@ -94,7 +94,9 @@ const Dashboard = () => {
                 <td className='p-2 '>{order.paymentDetail.status}</td>
                 <td className='p-2 '><p>
                   {new Date(order.createdAt).toLocaleString("en-IN", {
-                    timeZone: "Asia/Kolkata"
+                    timeZone: "Asia/Kolkata",
+                     hour: '2-digit',
+                     minute: '2-digit'
                   })}
                 </p></td>
               </tr>
