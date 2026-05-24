@@ -106,16 +106,18 @@ const Login = () => {
                 className='w-full flex justify-center'
             >
 
-                <div className='bg-white rounded w-full sm:w-[80%] md:w-[400px] flex flex-col gap-2 p-3'>
+                <div className='bg-white rounded w-full max-w-[400px] flex flex-col gap-2 p-3'>
 
                     <div className='text-center'>
+
                         <h1 className='font-bold text-3xl'>
                             Sign in
                         </h1>
 
                         <p className='font-bold'>
-                            Sing in below to access your account
+                            Sign in below to access your account
                         </p>
+
                     </div>
 
                     <div className='flex flex-col gap-1'>
@@ -125,7 +127,7 @@ const Login = () => {
                         </label>
 
                         <input
-                            className='border p-1 rounded'
+                            className='border p-2 rounded outline-none'
                             type="email"
                             name='email'
                             placeholder='Yourname@example.com'
@@ -138,6 +140,7 @@ const Login = () => {
                                 {error.email}
                             </p>
                         )}
+
                     </div>
 
                     <div className='flex flex-col gap-1'>
@@ -147,7 +150,7 @@ const Login = () => {
                         </label>
 
                         <input
-                            className='border p-1 rounded'
+                            className='border p-2 rounded outline-none'
                             type="password"
                             name='password'
                             placeholder='***********'
@@ -160,17 +163,25 @@ const Login = () => {
                                 {error.password}
                             </p>
                         )}
+
                     </div>
 
-                    <button className='bg-black rounded p-1 cursor-pointer text-white font-bold'>
+                    <button className='bg-black rounded p-2 cursor-pointer text-white font-bold'>
+
                         {loading ? (
-                            <PulseLoader loading={true} size={17} color='#ffffff' />
+                            <PulseLoader
+                                loading={true}
+                                size={17}
+                                color='#ffffff'
+                            />
                         ) : (
                             "Signin"
                         )}
+
                     </button>
 
                     <p className='text-center'>
+
                         Don't have an account ?{" "}
 
                         <span
@@ -179,10 +190,13 @@ const Login = () => {
                         >
                             Register
                         </span>
+
                     </p>
 
                 </div>
+
             </form>
+
         </div>
 
     )
