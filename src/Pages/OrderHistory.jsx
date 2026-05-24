@@ -28,6 +28,7 @@ const OrderHistory = () => {
                 let data = await response.json()
                 if (response.status == 200) {
                     console.log(data);
+                    setLast(data.last)
                     setorders((prev)=>[...prev,...data.content])
                 } else {
                     setorders([])
@@ -96,9 +97,8 @@ const OrderHistory = () => {
                     <button
                         disabled={Last}
                         onClick={() => setpage(page + 1)}
-                        className={`bg-black text-white px-4 py-2 rounded cursor-pointer disabled:bg-gray-500 ${loadingmore && "hidden"}${Last && "hidden"} `}
-                    >
-                        Load
+                        className={`bg-black text-white px-4 py-2 rounded cursor-pointer ${loadingmore && "hidden"}${Last && "hidden"} `}>
+                        Load More
                     </button>
                     {loadingmore && <ClipLoader/>}
                 </div>
