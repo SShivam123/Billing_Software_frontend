@@ -3,14 +3,18 @@ import { data, useNavigate } from 'react-router-dom';
 
 export const Appcontext = createContext();
 const AppContextProvider = ({ children }) => {
-    const [auth, setauth] = useState({ token: null, role: null })
+    // const [auth, setauth] = useState({ token: null, role: null })
+    const [auth, setauth] = useState(() => ({
+        token: localStorage.getItem("token"),
+        role: localStorage.getItem("role")
+    }))
     const [category, setcategory] = useState([])
     const [userdata, setuserdata] = useState(null)
     const [loadingUsere, setloadingUsere] = useState(false)
     const [Items, setItems] = useState([])
     const [loadItem, setloadItem] = useState(false)
     const [CartItem, setCartItem] = useState([])
-   const navigate = useNavigate()
+    const navigate = useNavigate()
     const setAuthData = (token, role) => {
         setauth({ token, role })
     }
@@ -23,17 +27,17 @@ const AppContextProvider = ({ children }) => {
                 },
             }
             );
-           
+
             if (response.ok) {
-                 let data = await response.json();
+                let data = await response.json();
                 // console.log(data);
                 setuserdata(data)
-            }else if(response.status == 401){
+            } else if (response.status == 401) {
                 localStorage.removeItem("token")
                 localStorage.removeItem("auth")
                 navigate("/login")
             }
-             else {
+            else {
                 console.log("Error occured");
 
             }
@@ -49,9 +53,9 @@ const AppContextProvider = ({ children }) => {
         getLoggedinUser()
         loadCategory()
         loadItems()
-        if(localStorage.getItem("token") && localStorage.getItem("role")){
-            setAuthData(localStorage.getItem("token") , localStorage.getItem("role"));
-        }
+        // if (localStorage.getItem("token") && localStorage.getItem("role")) {
+        //     setAuthData(localStorage.getItem("token"), localStorage.getItem("role"));
+        // }
     }, [])
 
 
@@ -95,32 +99,32 @@ const AppContextProvider = ({ children }) => {
     }
 
     const addToCart = (item) => {
-        let existingItems =CartItem && CartItem.find(cartitem => cartitem.name === item.name);
+        let existingItems = CartItem && CartItem.find(cartitem => cartitem.name === item.name);
         if (existingItems) {
             setCartItem(CartItem.map((cartitem) => (cartitem.name === item.name ? { ...cartitem, quantity: cartitem.quantity + 1 } : cartitem)))
         } else {
-            setCartItem(CartItem &&[...CartItem, { ...item, quantity: 1 }])
+            setCartItem(CartItem && [...CartItem, { ...item, quantity: 1 }])
         }
     }
 
-    const removeFromCart=(item)=>{
-      let filterdCart = CartItem.filter((cartitem)=>{
-        return cartitem.name!=item.name
-      })
-      setCartItem(filterdCart)
+    const removeFromCart = (item) => {
+        let filterdCart = CartItem.filter((cartitem) => {
+            return cartitem.name != item.name
+        })
+        setCartItem(filterdCart)
     }
 
-    const UpdateQuantity=(itemid , newQuantity)=>{
-        let updateItem = CartItem.map(cartitem=>cartitem.itemid === itemid ? {...cartitem,quantity:newQuantity}:cartitem)
+    const UpdateQuantity = (itemid, newQuantity) => {
+        let updateItem = CartItem.map(cartitem => cartitem.itemid === itemid ? { ...cartitem, quantity: newQuantity } : cartitem)
         setCartItem(updateItem)
     }
 
-    const clearCart=()=>{
+    const clearCart = () => {
         setCartItem([]);
     }
 
     return (
-        <Appcontext.Provider value={{setuserdata,clearCart, loadItem, setloadItem, loadItems, Items, setItems, loadCategory, category, setcategory, setAuthData, auth, setauth, getLoggedinUser, userdata, setloadingUsere , addToCart , CartItem,setCartItem,removeFromCart,UpdateQuantity}}>
+        <Appcontext.Provider value={{ setuserdata, clearCart, loadItem, setloadItem, loadItems, Items, setItems, loadCategory, category, setcategory, setAuthData, auth, setauth, getLoggedinUser, userdata, setloadingUsere, addToCart, CartItem, setCartItem, removeFromCart, UpdateQuantity }}>
             {children}
         </Appcontext.Provider>
     )
