@@ -41,7 +41,7 @@ const CartSummary = ({ customername, setcustomername, customerNumber, setcustome
     })
   }
 
-  const deleteOrderOnFailure = async (orderID) => {
+  const deleteOrderOnFailure = async (orderId) => {
     try {
       let response = await fetch(`https://billingsoftwarebackend-production-c836.up.railway.app/orders/delete/${orderId}`, {
         method: "DELETE",
