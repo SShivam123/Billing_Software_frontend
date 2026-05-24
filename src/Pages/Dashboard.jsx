@@ -12,8 +12,11 @@ const Dashboard = () => {
 
   useEffect(() => {
     loadCategory()
+  },[])
+
+  useEffect(()=>{
     loadItems()
-  }, [])
+  },[])
 
   useEffect(() => {
     const loadDashBoardData = async () => {
@@ -94,13 +97,8 @@ const Dashboard = () => {
                 <td className='p-2 '>{order.paymentDetail.status}</td>
                 <td className='p-2 '><p>
                   {new Date(order.createAt).toLocaleDateString('en-US', {
-                    timeZone: 'Asia/Kolkata',
-                    day: '2-digit',
-                    month: '2-digit',
-                    year: 'numeric',
                     hour: '2-digit',
-                    minute: '2-digit',
-                    hour12: true
+                    minute: '2-digit'
                   })}
                 </p></td>
               </tr>
