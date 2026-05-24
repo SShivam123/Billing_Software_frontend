@@ -66,9 +66,8 @@ const Login = () => {
         }
     }
 
-    // className="w-full h-screen bg-cover bg-center flex justify-center items-center"
     return (
-        <div className='sm:h-[calc(100vh)] h-screen w-full bg-cover bg-center sm:flex-row flex-col flex justify-center items-center'
+        <div className="w-full h-screen bg-cover bg-center flex justify-center items-center"
             style={{ backgroundRepeat: "no-repeat", backgroundImage: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(${BillingImage})` }}>
             <form action="" onSubmit={handleSubmit}>
                 <div className='bg-white rounded w-100 flex flex-col gap-2 p-3'>
