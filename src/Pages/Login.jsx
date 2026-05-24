@@ -91,9 +91,8 @@ const Login = () => {
         //         </div>
         //     </form>
         // </div>
-
         <div
-            className="w-full min-h-screen bg-cover bg-center flex justify-center items-center px-3"
+            className="min-h-screen w-full bg-cover bg-center flex items-center justify-center px-4"
             style={{
                 backgroundRepeat: "no-repeat",
                 backgroundImage: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(${BillingImage})`
@@ -101,78 +100,77 @@ const Login = () => {
         >
 
             <form
-                action=""
                 onSubmit={handleSubmit}
-                className='w-full flex justify-center'
+                className="w-full max-w-[400px]"
             >
 
-                <div className='bg-white rounded w-full max-w-[400px] flex flex-col gap-2 p-3'>
+                <div className="bg-white rounded-lg p-4 flex flex-col gap-3">
 
-                    <div className='text-center'>
+                    <div className="text-center">
 
-                        <h1 className='font-bold text-3xl'>
+                        <h1 className="font-bold text-3xl">
                             Sign in
                         </h1>
 
-                        <p className='font-bold'>
+                        <p className="font-bold text-sm">
                             Sign in below to access your account
                         </p>
 
                     </div>
 
-                    <div className='flex flex-col gap-1'>
+                    <div className="flex flex-col gap-1">
 
-                        <label className='font-bold' htmlFor="email">
+                        <label className="font-bold">
                             Email address
                         </label>
 
                         <input
-                            className='border p-2 rounded outline-none'
+                            className="border p-2 rounded outline-none"
                             type="email"
-                            name='email'
-                            placeholder='Yourname@example.com'
+                            name="email"
+                            placeholder="Yourname@example.com"
                             value={loginform.email}
                             onChange={onChangerHandler}
                         />
 
                         {error.email && (
-                            <p className='text-red-500'>
+                            <p className="text-red-500 text-sm">
                                 {error.email}
                             </p>
                         )}
 
                     </div>
 
-                    <div className='flex flex-col gap-1'>
+                    <div className="flex flex-col gap-1">
 
-                        <label className='font-bold' htmlFor="password">
+                        <label className="font-bold">
                             Password
                         </label>
 
                         <input
-                            className='border p-2 rounded outline-none'
+                            className="border p-2 rounded outline-none"
                             type="password"
-                            name='password'
-                            placeholder='***********'
+                            name="password"
+                            placeholder="***********"
                             value={loginform.password}
                             onChange={onChangerHandler}
                         />
 
                         {error.password && (
-                            <p className='text-red-500'>
+                            <p className="text-red-500 text-sm">
                                 {error.password}
                             </p>
                         )}
 
                     </div>
 
-                    <button className='bg-black rounded p-2 cursor-pointer text-white font-bold'>
+                    <button className="bg-black rounded p-2 cursor-pointer text-white font-bold">
 
                         {loading ? (
                             <PulseLoader
                                 loading={true}
                                 size={17}
-                                color='#ffffff'
+                                color="#ffffff"
                             />
                         ) : (
                             "Signin"
@@ -180,12 +178,12 @@ const Login = () => {
 
                     </button>
 
-                    <p className='text-center'>
+                    <p className="text-center text-sm">
 
-                        Don't have an account ?{" "}
+                        Don't have an account?{" "}
 
                         <span
-                            className='underline cursor-pointer text-blue-500'
+                            className="underline cursor-pointer text-blue-500"
                             onClick={() => navigate("/register")}
                         >
                             Register
