@@ -78,11 +78,7 @@ const OrderHistory = () => {
                                 <td className='px-10 py-1'>{order.grandTotal}</td>
                                 <td className='px-10 py-1'>{order.paymentMethod}</td>
                                 <td className='px-10 py-1'><span className={`${order.paymentDetail.status == "COMPLETE" ? "bg-green-500" : "bg-amber-300"} rounded p-1`}>{order.paymentDetail.status}</span></td>
-                                <td className='px-10 py-1'><p>{new Date(formatDate.order.createdAt).toLocaleString("en-IN", {
-                                    timeZone: "Asia/Kolkata",
-                                    hour: '2-digit',
-                                    minute: '2-digit'
-                                })}</p></td>
+                                <td className='px-10 py-1'><p>{formatDate(order.createAt)}</p></td>
                             </tr>
                         ))}
                     </tbody>
@@ -91,5 +87,5 @@ const OrderHistory = () => {
         </div>
     )
 }
-// {formatDate(order.createAt)}
+
 export default OrderHistory

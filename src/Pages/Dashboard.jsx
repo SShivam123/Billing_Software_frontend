@@ -93,10 +93,9 @@ const Dashboard = () => {
                 <td className='p-2 '>{order.paymentMethod}</td>
                 <td className='p-2 '>{order.paymentDetail.status}</td>
                 <td className='p-2 '><p>
-                  {new Date(order.createdAt).toLocaleString("en-IN", {
-                    timeZone: "Asia/Kolkata",
-                     hour: '2-digit',
-                     minute: '2-digit'
+                  {new Date(order.createAt).toLocaleDateString('en-US', {
+                    hour: '2-digit',
+                    minute: '2-digit'
                   })}
                 </p></td>
               </tr>
@@ -110,7 +109,3 @@ const Dashboard = () => {
 
 export default Dashboard
 
-// {new Date(order.createAt).toLocaleDateString('en-US', {
-//                   hour: '2-digit',
-//                   minute: '2-digit'
-//                 })}
