@@ -112,7 +112,7 @@ const Setting = () => {
         }
     }
     return (
-        <div className='h-[calc(100vh-80px)] flex justify-center items-center '>
+        <div className='h-[calc(100vh-80px)] flex justify-center items-center p-4'>
             <form onSubmit={handleSubmit} className='w-full lg:w-170 shadow-[0_0_15px_rgba(0,0,0,3)] rounded'>
                 <div className='w-full px-5 py-3 bg-white rounded flex flex-col gap-3'>
                     <h1 className='font-bold text-2xl text-center'>Edit Profile</h1>
