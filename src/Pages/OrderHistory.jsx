@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
+import { ClipLoader } from 'react-spinners'
 
 const OrderHistory = () => {
     const [loading, setloading] = useState(false)
@@ -35,6 +36,7 @@ const OrderHistory = () => {
                 toast.error("unable to load order")
             } finally {
                 setloading(false)
+                setloadingmore(false)
             }
         }
         loadAllOrders()
@@ -94,10 +96,11 @@ const OrderHistory = () => {
                     <button
                         disabled={Last}
                         onClick={() => setpage(page + 1)}
-                        className={`bg-black text-white px-4 py-2 rounded disabled:bg-gray-500 ${loadingmore && "hidden"}${Last && "hidden"} `}
+                        className={`bg-black text-white px-4 py-2 rounded cursor-pointer disabled:bg-gray-500 ${loadingmore && "hidden"}${Last && "hidden"} `}
                     >
                         Load
                     </button>
+                    {loadingmore && <ClipLoader/>}
                 </div>
             </div>
         </div>
