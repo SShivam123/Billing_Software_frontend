@@ -85,25 +85,19 @@ const AddStock = () => {
         // </div>
 
         <div className='h-[calc(100vh-80px)] flex justify-center items-center bg-black/80 px-3'>
-
             <form
                 action=""
                 onSubmit={handleSubmit}
                 className='w-full flex justify-center'
             >
-
                 <div className='w-full sm:w-[80%] md:w-[400px] bg-white rounded p-3 flex flex-col gap-2'>
-
                     <h1 className='text-center text-3xl font-bold'>
                         Add Stock
                     </h1>
-
                     <div className='flex flex-col gap-2'>
-
                         <label htmlFor="" className='font-semibold text-xl'>
                             Select Item
                         </label>
-
                         <select
                             name="itemId"
                             id=""
@@ -112,7 +106,6 @@ const AddStock = () => {
                             value={selectdItem}
                         >
                             <option value="">Select Item</option>
-
                             {Items.length > 0 &&
                                 Items.map((item, idx) => (
                                     <option value={item.itemid} key={idx}>
@@ -120,34 +113,28 @@ const AddStock = () => {
                                     </option>
                                 ))}
                         </select>
-
                         {errors && errors.itemName && (
                             <p className='text-red-400'>
                                 {errors.itemName}
                             </p>
                         )}
                     </div>
-
                     <div className='flex flex-col gap-2'>
-
                         <label htmlFor="" className='font-semibold text-xl'>
                             Enter Quantity
                         </label>
-
                         <input
                             type="number"
                             className='border rounded p-1'
                             onChange={(e) => setquantity(e.target.value)}
                             value={quantity}
                         />
-
                         {errors && errors.quantity && (
                             <p className='text-red-400'>
                                 {errors.quantity}
                             </p>
                         )}
                     </div>
-
                     <button
                         className='cursor-pointer font-bold bg-amber-400 mt-1 p-1 rounded'
                         disabled={loading}
@@ -158,7 +145,6 @@ const AddStock = () => {
                             "Add Stock"
                         )}
                     </button>
-
                 </div>
             </form>
         </div>

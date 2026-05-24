@@ -67,30 +67,124 @@ const Login = () => {
     }
 
     return (
-        <div className="w-full h-screen bg-cover bg-center flex justify-center items-center"
-            style={{ backgroundRepeat: "no-repeat", backgroundImage: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(${BillingImage})` }}>
-            <form action="" onSubmit={handleSubmit}>
-                <div className='bg-white rounded w-100 flex flex-col gap-2 p-3'>
+        // <div className="w-full h-screen bg-cover bg-center flex justify-center items-center"
+        //     style={{ backgroundRepeat: "no-repeat", backgroundImage: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(${BillingImage})` }}>
+        //     <form action="" onSubmit={handleSubmit}>
+        //         <div className='bg-white rounded w-100 flex flex-col gap-2 p-3'>
+        //             <div className='text-center'>
+        //                 <h1 className='font-bold text-3xl'>Sign in</h1>
+        //                 <p className='font-bold'>Sing in below to access your account</p>
+        //             </div>
+        //             <div className='flex flex-col gap-1'>
+        //                 <label className='font-bold' htmlFor="email">Email address</label>
+        //                 <input className='border p-1 rounded' type="email" name='email' placeholder='Yourname@example.com'
+        //                     value={loginform.email} onChange={onChangerHandler} />
+        //                 {error.email && <p className='text-red-500'>{error.email}</p>}
+        //             </div>
+        //             <div className='flex flex-col gap-1'>
+        //                 <label className='font-bold' htmlFor="password">Password</label>
+        //                 <input className='border p-1 rounded' type="password" name='password' placeholder='***********' value={loginform.password} onChange={onChangerHandler} />
+        //                 {error.password && <p className='text-red-500'>{error.password}</p>}
+        //             </div>
+        //             <button className='bg-black rounded p-1 cursor-pointer text-white font-bold'>{loading ? <PulseLoader loading={true} size={17} color='#ffffff' /> : "Signin"}</button>
+        //             <p className='text-center'>Don't have an account ? {" "} <span className='underline cursor-pointer text-blue-500' onClick={() => navigate("/register")}>Register</span> </p>
+        //         </div>
+        //     </form>
+        // </div>
+
+        <div
+            className="w-full min-h-screen bg-cover bg-center flex justify-center items-center px-3"
+            style={{
+                backgroundRepeat: "no-repeat",
+                backgroundImage: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(${BillingImage})`
+            }}
+        >
+
+            <form
+                action=""
+                onSubmit={handleSubmit}
+                className='w-full flex justify-center'
+            >
+
+                <div className='bg-white rounded w-full sm:w-[80%] md:w-[400px] flex flex-col gap-2 p-3'>
+
                     <div className='text-center'>
-                        <h1 className='font-bold text-3xl'>Sign in</h1>
-                        <p className='font-bold'>Sing in below to access your account</p>
+                        <h1 className='font-bold text-3xl'>
+                            Sign in
+                        </h1>
+
+                        <p className='font-bold'>
+                            Sing in below to access your account
+                        </p>
                     </div>
+
                     <div className='flex flex-col gap-1'>
-                        <label className='font-bold' htmlFor="email">Email address</label>
-                        <input className='border p-1 rounded' type="email" name='email' placeholder='Yourname@example.com'
-                            value={loginform.email} onChange={onChangerHandler} />
-                        {error.email && <p className='text-red-500'>{error.email}</p>}
+
+                        <label className='font-bold' htmlFor="email">
+                            Email address
+                        </label>
+
+                        <input
+                            className='border p-1 rounded'
+                            type="email"
+                            name='email'
+                            placeholder='Yourname@example.com'
+                            value={loginform.email}
+                            onChange={onChangerHandler}
+                        />
+
+                        {error.email && (
+                            <p className='text-red-500'>
+                                {error.email}
+                            </p>
+                        )}
                     </div>
+
                     <div className='flex flex-col gap-1'>
-                        <label className='font-bold' htmlFor="password">Password</label>
-                        <input className='border p-1 rounded' type="password" name='password' placeholder='***********' value={loginform.password} onChange={onChangerHandler} />
-                        {error.password && <p className='text-red-500'>{error.password}</p>}
+
+                        <label className='font-bold' htmlFor="password">
+                            Password
+                        </label>
+
+                        <input
+                            className='border p-1 rounded'
+                            type="password"
+                            name='password'
+                            placeholder='***********'
+                            value={loginform.password}
+                            onChange={onChangerHandler}
+                        />
+
+                        {error.password && (
+                            <p className='text-red-500'>
+                                {error.password}
+                            </p>
+                        )}
                     </div>
-                    <button className='bg-black rounded p-1 cursor-pointer text-white font-bold'>{loading ? <PulseLoader loading={true} size={17} color='#ffffff' /> : "Signin"}</button>
-                    <p className='text-center'>Don't have an account ? {" "} <span className='underline cursor-pointer text-blue-500' onClick={() => navigate("/register")}>Register</span> </p>
+
+                    <button className='bg-black rounded p-1 cursor-pointer text-white font-bold'>
+                        {loading ? (
+                            <PulseLoader loading={true} size={17} color='#ffffff' />
+                        ) : (
+                            "Signin"
+                        )}
+                    </button>
+
+                    <p className='text-center'>
+                        Don't have an account ?{" "}
+
+                        <span
+                            className='underline cursor-pointer text-blue-500'
+                            onClick={() => navigate("/register")}
+                        >
+                            Register
+                        </span>
+                    </p>
+
                 </div>
             </form>
         </div>
+
     )
 }
 
