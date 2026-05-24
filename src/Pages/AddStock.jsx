@@ -62,7 +62,7 @@ const AddStock = () => {
     return (
         <div className='h-[calc(100vh-80px)] flex justify-center items-center bg-black/80'>
             <form action="" onSubmit={handleSubmit}>
-                <div className='w-100 bg-white rounded p-3 flex flex-col gap-2'>
+                <div className='w-[90%] md:w-[400px] bg-white rounded p-3 flex flex-col gap-2'>
                     <h1 className='text-center text-3xl font-bold'>Add Stock</h1>
                     <div className='flex flex-col gap-2'>
                         <label htmlFor="" className='font-semibold text-xl'>Select Item</label>
