@@ -50,7 +50,7 @@ const Setting = () => {
         if (auth.role == "ADMIN") {
             try {
                 setloading(true)
-                let response = await fetch("http://localhost:8080/admin/update", {
+                let response = await fetch("https://billingsoftwarebackend-production-c836.up.railway.app/admin/update", {
                     method: "PUT",
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem("token")}`,
