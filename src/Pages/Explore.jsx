@@ -13,10 +13,11 @@ const Explore = () => {
   const [customerNumber, setcustomerNumber] = useState("")
   const {category,setcategory,Items} = useContext(Appcontext)
   // console.log(category);
-  
+  // className='h-full w-full p-5 flex gap-5 bg-black/85'
+  //  className='right w-[30%] h-118 rounded border border-white p-2 '
   return (
-    <div className='h-full w-full p-5 flex gap-5 bg-black/85'>
-      <div className='left w-[70%] h-118 rounded border border-white p-3'>
+    <div  className='sm:h-[calc(100vh-80px)] h-full w-full p-5 flex gap-5 bg-black/85 sm:flex-row flex-col'>
+      <div className='left md:w-[70%] sm:w-[50%] sm:h-full h-100 rounded border border-white p-3'>
         <div className=' firstRow overflow-y-auto  h-[35%] text-white'>
           <DisplayCategory category={category} selectedCategory={selectedCategory} setselectedCategory={setselectedCategory}/>
         </div>
@@ -25,12 +26,12 @@ const Explore = () => {
           <DisplayItem Items={Items} selectedCategory={selectedCategory}/>
         </div>
       </div>
-      <div className='right w-[30%] h-118 rounded border border-white p-2 '>
-        <div className='h-[25%] text-white'>
+      <div className='right md:w-[30%] sm:w-[50%] sm:h-full h-100 rounded border border-white p-2'>
+        <div className='h-[28%] text-white'>
           <CustomerForm customername={customername} setcustomername={setcustomername} customerNumber={customerNumber} setcustomerNumber={setcustomerNumber}/>
         </div>
         <hr className='text-white' />
-        <div className='cartitems h-[45%] text-white py-2 overflow-y-scroll'>
+        <div className='cartitems h-[36%] text-white py-2 overflow-y-scroll'>
             <CartItem/>
         </div>
         <hr className='text-white' />
