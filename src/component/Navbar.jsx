@@ -182,6 +182,7 @@ const Navbar = () => {
                                     MANAGE USER
                                 </NavLink>
                                 <NavLink
+                                onClick={() => setmenuOpen(false)}
                                     to="/addStock"
                                     className={({ isActive }) =>
                                         isActive
