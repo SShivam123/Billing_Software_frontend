@@ -4,14 +4,21 @@ import toast from 'react-hot-toast'
 const OrderHistory = () => {
     const [loading, setloading] = useState(false)
     const [orders, setorders] = useState([])
+    const [page, setpage] = useState(0)
+    const [Last, setLast] = useState(false)
+    const [loadingmore, setloadingmore] = useState(false)
     console.log(orders);
 
 
     useEffect(() => {
         const loadAllOrders = async () => {
             try {
-                setloading(true)
-                let response = await fetch("https://billingsoftwarebackend-production-c836.up.railway.app/orders/allorders", {
+                if(page == 0){
+                    setloading(true)
+                }else{
+                    setloadingmore(true)
+                }
+                let response = await fetch(`https://billingsoftwarebackend-production-c836.up.railway.app/orders/allorders?page=${page}&size=10`, {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem("token")}`,
                         // "Content-Type": "application/json"
@@ -20,7 +27,7 @@ const OrderHistory = () => {
                 let data = await response.json()
                 if (response.status == 200) {
                     console.log(data);
-                    setorders(data)
+                    setorders((prev)=>[...prev,...data.content])
                 } else {
                     setorders([])
                 }
@@ -31,7 +38,7 @@ const OrderHistory = () => {
             }
         }
         loadAllOrders()
-    }, [])
+    }, [page])
 
     const formatItems = (item) => {
         return item.map(item => `${item.name} X ${item.quantity}`).join(',')
@@ -83,6 +90,15 @@ const OrderHistory = () => {
                         ))}
                     </tbody>
                 </table>
+                <div className='flex justify-center items-center gap-3 mt-5'>
+                    <button
+                        disabled={Last}
+                        onClick={() => setpage(page + 1)}
+                        className={`bg-black text-white px-4 py-2 rounded disabled:bg-gray-500 ${loadingmore && "hidden"}${Last && "hidden"} `}
+                    >
+                        Load
+                    </button>
+                </div>
             </div>
         </div>
     )
