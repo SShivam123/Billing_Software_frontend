@@ -4,6 +4,7 @@ import { Trash2, Search } from 'lucide-react';
 import { toast } from 'react-hot-toast'
 
 const CategoryList = () => {
+    const API_URL = import.meta.env.VITE_API_URL;
     const { category, setcategory, loadCategory } = useContext(Appcontext)
     const [searchValue, setsearchValue] = useState("")
     // console.log(category);
@@ -16,7 +17,7 @@ const CategoryList = () => {
 
     const handleDelete = async (categoryId) => {
         try {
-            let response = await fetch(`https://billingsoftwarebackend-production-c836.up.railway.app/admin/category/delete/${categoryId}`, {
+            let response = await fetch(`${API_URL}/admin/category/delete/${categoryId}`, {
                 method: "DELETE",
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem("token")}`

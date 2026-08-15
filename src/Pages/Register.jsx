@@ -9,6 +9,7 @@ import { State, City } from 'country-state-city'
 
 
 const Register = () => {
+    const API_URL = import.meta.env.VITE_API_URL;
     const states = State.getStatesOfCountry("IN");
     const [formData, setFormData] = useState({
         ownerName: "",
@@ -81,7 +82,7 @@ const Register = () => {
         }
         try {
             setLoading(true)
-            let response = await fetch("https://billingsoftwarebackend-production-c836.up.railway.app/register", {
+            let response = await fetch(`${API_URL}/register`, {
                 method: "Post",
                 credentials: "include",
                 headers: {

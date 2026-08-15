@@ -8,6 +8,7 @@ const AppContextProvider = ({ children }) => {
         token: localStorage.getItem("token"),
         role: localStorage.getItem("role")
     }))
+    const API_URL = import.meta.env.VITE_API_URL;
     const [category, setcategory] = useState([])
     const [userdata, setuserdata] = useState(null)
     const [loadingUsere, setloadingUsere] = useState(false)
@@ -21,7 +22,7 @@ const AppContextProvider = ({ children }) => {
 
     async function getLoggedinUser() {
         try {
-            let response = await fetch("https://billingsoftwarebackend-production-c836.up.railway.app/profile", {
+            let response = await fetch(`${API_URL}/profile`, {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
                 },
@@ -61,7 +62,7 @@ const AppContextProvider = ({ children }) => {
 
     async function loadCategory() {
         try {
-            let response = await fetch("https://billingsoftwarebackend-production-c836.up.railway.app/category/all", {
+            let response = await fetch(`${API_URL}/category/all`, {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
                 },
@@ -80,7 +81,7 @@ const AppContextProvider = ({ children }) => {
     async function loadItems() {
         try {
             setloadItem(true)
-            let response = await fetch("https://billingsoftwarebackend-production-c836.up.railway.app/items", {
+            let response = await fetch(`${API_URL}/items`, {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
                 },

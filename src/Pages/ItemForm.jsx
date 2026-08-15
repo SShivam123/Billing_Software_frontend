@@ -4,6 +4,7 @@ import toast from 'react-hot-toast'
 import { PulseLoader } from 'react-spinners'
 
 const ItemForm = () => {
+    const API_URL = import.meta.env.VITE_API_URL;
     const {category,Items,setItems} = useContext(Appcontext)
     const [image, setimage] = useState(null)
     const [errors, seterrors] = useState(null)
@@ -53,7 +54,7 @@ const ItemForm = () => {
 
         try{
             setloading(true)
-            let response = await fetch("https://billingsoftwarebackend-production-c836.up.railway.app/admin/additem",{
+            let response = await fetch(`${API_URL}/admin/additem`,{
                 method:"POST",
                 headers:{
                     "Authorization":`Bearer ${localStorage.getItem("token")}`

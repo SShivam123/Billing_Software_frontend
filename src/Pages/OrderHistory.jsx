@@ -3,6 +3,7 @@ import toast from 'react-hot-toast'
 import { ClipLoader } from 'react-spinners'
 
 const OrderHistory = () => {
+    const API_URL = import.meta.env.VITE_API_URL;
     const [loading, setloading] = useState(false)
     const [orders, setorders] = useState([])
     const [page, setpage] = useState(0)
@@ -19,7 +20,7 @@ const OrderHistory = () => {
                 }else{
                     setloadingmore(true)
                 }
-                let response = await fetch(`https://billingsoftwarebackend-production-c836.up.railway.app/orders/allorders?page=${page}&size=10`, {
+                let response = await fetch(`${API_URL}/orders/allorders?page=${page}&size=10`, {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem("token")}`,
                         // "Content-Type": "application/json"

@@ -7,6 +7,7 @@ import Itemss from './Itemss';
 
 const CartSummary = ({ customername, setcustomername, customerNumber, setcustomerNumber }) => {
   const [isPrcessing, setisPrcessing] = useState(false)
+  const API_URL = import.meta.env.VITE_API_URL;
   const [orderDetails, setorderDetails] = useState(null)
   const [showPopUp, setshowPopUp] = useState(false)
   const { CartItem, clearCart,Items,setItems } = useContext(Appcontext)
@@ -43,7 +44,7 @@ const CartSummary = ({ customername, setcustomername, customerNumber, setcustome
 
   const deleteOrderOnFailure = async (orderId) => {
     try {
-      let response = await fetch(`https://billingsoftwarebackend-production-c836.up.railway.app/orders/delete/${orderId}`, {
+      let response = await fetch(`${API_URL}/orders/delete/${orderId}`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -99,7 +100,7 @@ const CartSummary = ({ customername, setcustomername, customerNumber, setcustome
     setisPrcessing(true)
     try {
 
-      let response = await fetch(`https://billingsoftwarebackend-production-c836.up.railway.app/orders/create-order`, {
+      let response = await fetch(`${API_URL}/orders/create-order`, {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -132,7 +133,7 @@ const CartSummary = ({ customername, setcustomername, customerNumber, setcustome
           deleteOrderOnFailure(data.orderId);
           return;
         }
-        let razorpayOrder = await fetch("https://billingsoftwarebackend-production-c836.up.railway.app/payments/create-order", {
+        let razorpayOrder = await fetch(`${API_URL}/payments/create-order`, {
           method: "POST",
           headers: {
             "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -209,7 +210,7 @@ const CartSummary = ({ customername, setcustomername, customerNumber, setcustome
       orderId: savedOrder.orderId
     };
     try {
-      let paymentResponse = await fetch("https://billingsoftwarebackend-production-c836.up.railway.app/payments/verify", {
+      let paymentResponse = await fetch(`${API_URL}/payments/verify`, {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${localStorage.getItem("token")}`,

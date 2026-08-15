@@ -4,12 +4,13 @@ import UserList from './UserList'
 import toast from 'react-hot-toast'
 
 const ManageUser = () => {
+  const API_URL = import.meta.env.VITE_API_URL;
   const [Users, setUsers] = useState([])
   const [loadingUser, setloadingUser] = useState(false)
   const fetchAllusers = async () => {
     try {
       setloadingUser(true)
-      let response = await fetch("http://localhost:8080/admin/users", {
+      let response = await fetch(`${API_URL}/admin/users`, {
         headers: {
           "Authorization": `Bearer ${localStorage.getItem("token")}`
         }

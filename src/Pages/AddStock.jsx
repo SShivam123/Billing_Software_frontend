@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 const AddStock = () => {
     const { loadItems, Items, setItems } = useContext(Appcontext)
     console.log(Items);
-
+    const API_URL = import.meta.env.VITE_API_URL;
     const [loading, setloading] = useState(false)
     const [selectdItem, setselectdItem] = useState("")
     const [quantity, setquantity] = useState("")
@@ -34,7 +34,7 @@ const AddStock = () => {
 
         try {
             setloading(true)
-            let response = await fetch("https://billingsoftwarebackend-production-c836.up.railway.app/admin/add-stock", {
+            let response = await fetch(`${API_URL}/admin/add-stock`, {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem("token")}`,

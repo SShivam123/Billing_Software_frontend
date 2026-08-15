@@ -5,6 +5,7 @@ import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 
 const Setting = () => {
+    const API_URL = import.meta.env.VITE_API_URL;
     const { userdata, setuserdata, auth, setauth } = useContext(Appcontext)
     const [errors, seterrors] = useState(null)
     const [loading, setloading] = useState(false)
@@ -50,7 +51,7 @@ const Setting = () => {
         if (auth.role == "ADMIN") {
             try {
                 setloading(true)
-                let response = await fetch("https://billingsoftwarebackend-production-c836.up.railway.app/admin/update", {
+                let response = await fetch(`${API_URL}/admin/update`, {
                     method: "PUT",
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -81,7 +82,7 @@ const Setting = () => {
         } else {
             try {
                 setloading(true)
-                let response = await fetch("https://billingsoftwarebackend-production-c836.up.railway.app/user/update", {
+                let response = await fetch(`${API_URL}/user/update`, {
                     method: "PUT",
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem("token")}`,

@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import AppContextProvider, { Appcontext } from './AppContextProvider'
 
 const Login = () => {
+    const API_URL = import.meta.env.VITE_API_URL;
     const { setAuthData, getLoggedinUser, userdata, setloadingUsere } = useContext(Appcontext)
     const navigate = useNavigate();
     const [error, seterror] = useState({})
@@ -38,7 +39,7 @@ const Login = () => {
         }
         setloading(true)
         try {
-            let response = await fetch("https://billingsoftwarebackend-production-c836.up.railway.app/login", {
+            let response = await fetch(`${API_URL}/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
